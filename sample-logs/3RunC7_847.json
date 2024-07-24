@@ -1,0 +1,25 @@
+{
+
+"//":"informacion del proyecto:",
+
+	"project":"Run",
+	"versions":["C7"],
+	"testcases":["@ERROR","fannkuch-redux","fasta","@ERROR","mandelbrot","n-body","regex-redux","spectral-norm"],
+	"measurements":"30",
+	"executions":"25",
+	"config_v":"false",
+	"config_tc":"false",
+	"config_m":"false",
+	"compile":"true",
+	
+	"firstValidValue":"1064.0",
+	"lastValidValue":"1588.0",
+	
+	"time":"true",
+	"hdd":"true",
+	"graphicsCard":"true",
+	"process":"true",
+	"monitor":"false",
+	"dut":"true"
+
+}
