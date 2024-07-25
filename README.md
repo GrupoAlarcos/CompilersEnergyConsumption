@@ -167,8 +167,6 @@ Note: The rest of the logs of this study are not included in the repository for 
 
 ## Contacts and References
 
-Previous study carried out by [Pereira et al., 2021]( https://states.github.io/files/j2.pdf)
-
 [Green Team Alarcos](https://greenteamalarcos.uclm.es/)
 
 [The Computer Language Benchmark Game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/)
