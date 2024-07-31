@@ -1,4 +1,4 @@
-# Does the programming language translator version influence the energy consumption of programming languages?
+# Does the compiler or interpreter version influence the energy consumption of programming languages?
 
 [Elisa Jimenez](https://orcid.org/0000-0002-2158-037X)  
 
