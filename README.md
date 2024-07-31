@@ -13,17 +13,7 @@
 
 
 ## Abstract
-Today, software plays a crucial role in our daily activities. Virtually all the technology we use contains software
-components written in a particular programming language. In this context, programming language translators play an
-important role, as they are needed to convert the software source code, written by professional software developers,
-into a format that can be executed by a machine. The significant influence of the programming language on the energy
-consumption of the resulting programs has been highlighted in some research. However, there have been no studies on
-the impact of the programming language translator version of the programming language on the energy consumption.
-This paper presents a first approach to fill this gap by investigating the impact of programming language translator
-versions on the energy consumption of programs written in Python, C and Java. We measured the energy consumed
-by eight algorithms written in the three languages and run with different programming language translator versions.
-Surprisingly, the results show no noticeable trend of improvement between versions within each language. These
-results seem to indicate that energy efficiency is not among the aspects considered to evolve programming language
+Software plays a crucial role in our daily activities. Virtually all the technology we use contains software components written in a particular programming language. In this context, compilers and interpreters play an important role, as they are needed to convert the software source code into a format that can be executed by a machine. The significant influence of the programming language on the energy consumption of the resulting programs has been highlighted in some research. However, there is almost no research on the impact of the programming language compiler/interpreter version of the programming language on the energy consumption. This paper attempts to fill this gap by investigating their impact on the energy consumption of programs written in C, Java and Python. We applied a hardware-based energy measurement approach to obtain the energy consumed by eight algorithms written in the three languages and run with different compiler/interpreter versions. Surprisingly, the results show no noticeable trend of improvement between versions within each language. These results seem to indicate that energy efficiency is not among the main aspects considered to evolve compilers/interpreters.
 translators.
 
 ## What is this?
@@ -38,10 +28,10 @@ This folder contains three main folders: code, empirical results and sample logs
 
 ## Code Folder
 
-The code folder contains 17 subfolders, one for each PLT (Programming Language Translator).  Its structure is as follows:
+The code folder contains 17 subfolders, one for each compiler/interpreter.  Its structure is as follows:
 ```Java
 
-| <PTL-1>
+| <compiler/interpreter-1>
 	| <algorithm-1>
 		| <source>
 		| Makefile
@@ -50,7 +40,7 @@ The code folder contains 17 subfolders, one for each PLT (Programming Language T
 		| <source>
 		| Makefile
 | ...
-| <PTL-i>
+| <compiler/interpreter-i>
 	| <algorithm-1>
 	| ...
 	| <algorithm-i>
@@ -58,7 +48,7 @@ The code folder contains 17 subfolders, one for each PLT (Programming Language T
 
 ```
 
-Taking the `Java` PLT as an example, this is how the folder for the `binary-trees` algorithm would look like:
+Taking the `Java` compiler as an example, this is how the folder for the `binary-trees` algorithm would look like:
 
 ```Java
 
@@ -95,8 +85,8 @@ run:
 ## Empirical Results Folder
 
 The empirical results folder includes all the information on the analysis of the energy consumption of the software. The basic terminology used is as follows:
-- An entity class corresponds to a PLT. 
-- The test case is an algorithm implemented in a determined PLT.
+- An entity class or version corresponds to a compiler/interpreter version. 
+- The test case is an algorithm implemented in a determined compiler/interpreter.
 - Measurement is each of the executions of a testcase.
 
 It is structured as follows:
@@ -106,10 +96,6 @@ It is structured as follows:
 	| <EntityClass-1>@<Algorithm-1>.xls
 	| ...
 	| <EntityClass-i>@<Algorithm-i>.xls
-	| testcases_total.xls
-	| testcases_averages_comparison.xls
-	| versions_total.xls
-	| versions_averages__comparison.xls
 	| <img>
 		| <EntityClass-1>@<Algorithm>_<Device-1>.png
 		| ...
@@ -121,14 +107,28 @@ It is structured as follows:
 
 | coorelations.pdf
 | ScatterGraph_of_time_and_consumption.pdf
-| testcases_averages_comparison.xls
-| testcases_total.xls
+| testcases_mann-whitney.xls
 | testcases_spearman.xls
-| versions_averages__comparison.xls
-| versions_total.xls
+| testcases_total.xls
+
+| versions_mann-whitney.xls
 | versions_spearman.xls
+| versions_total.xls
 
 ```
+To facilitate the comparison of information, the file "testcases_total" contains one sheet for each statistical value of all test cases. These statistical values are:
+Consumption average without baseline, Consumption average (with baseline), Baseline, Power average without baseline, Power average (with baseline) and Standard deviation among measurments 
+
+![](resources/testcases_total_example.PNG)
+
+In the same way as the "testcase_total" document, the "versions_total" document contains the statistical values for each Entity Class.
+
+![](resources/versions_total_example.PNG)
+
+Finally, the validation tests of the statistics can be found in testcases__mann-whitney and versions_mann-whitney. It contains the Kolmogorov-Smirnov and Mann-Whitney tests for all comparisons of time, power and consumption.
+
+![](resources/comparison_example.PNG)
+
 ### Report Folder
 The report folder contains 225 Excel files containing the analysis data. One for each test case named `<EntityClass>@<Algorithm>`. It also contains two files "testcases_total" and "versions_total" with the summary of the test case and version information respectively.
 As an example, the following images show the information of a test case.
@@ -139,23 +139,9 @@ The first image shows all the information of a measurement.
 The second image shows all the information of a test case.
 ![](resources/testcase_example.PNG)
 
-To facilitate the comparison of information, the file "testcases_total" contains one sheet for each statistical value of all test cases. These statistical values are:
-Consumption average without baseline, Consumption median without baseline, Consumption average (with baseline), Consumption median (with baseline), Baseline, Power min, Power average without baseline, Power average (with baseline), Power median without baseline, Power median (with baseline), Trimmed mean to 20%, Winsorized mean to 20%, Geometric mean, Mean standard deviation, Mean variance, Standard deviation among measurments and Variance among measurments
-
-![](resources/testcases_total_example.PNG)
-
-In the same way as the "testcase_total" document, the "versions_total" document contains the statistical values for each Entity Class.
-
-![](resources/versions_total_example.PNG)
-
-Finally, the validation tests of the statistics can be found in testcases_comparison and versions-comparison. It contains the Kolmogorov-Smirnov and Mann-Whitney tests for all comparisons of time, power and consumption.
-
-![](resources/comparison_example.PNG)
 
 #### Img folder
-#### Img folder
-The img folder contains the graphs of the overall consumption in the execution of each measurement performed. It also includes the box plots of each device for each test case and for each version of PLT.
-
+The img folder contains the graphs of the overall consumption in the execution of each measurement performed. It also includes the box plots of each device for each test case and for each version of compiler/interpreter.
 ## Sample Logs Folder
 This folder contains an example of a log, to illustrate the raw data generated by the EET measurement instrument. 
 - The json file contains the measurement information of the entity class.
