@@ -13,8 +13,7 @@
 
 
 ## Abstract
-Software plays a crucial role in our daily activities. Virtually all the technology we use contains software components written in a particular programming language. In this context, compilers and interpreters play an important role, as they are needed to convert the software source code into a format that can be executed by a machine. The significant influence of the programming language on the energy consumption of the resulting programs has been highlighted in some research. However, there is almost no research on the impact of the programming language compiler/interpreter version of the programming language on the energy consumption. This paper attempts to fill this gap by investigating their impact on the energy consumption of programs written in C, Java and Python. We applied a hardware-based energy measurement approach to obtain the energy consumed by eight algorithms written in the three languages and run with different compiler/interpreter versions. Surprisingly, the results show no noticeable trend of improvement between versions within each language. These results seem to indicate that energy efficiency is not among the main aspects considered to evolve compilers/interpreters.
-translators.
+Software plays a crucial role in our daily activities. Virtually all the technology we use contains software components written in a particular programming language. In this context, compilers and interpreters play an important role, as they are needed to convert the software source code into a format that can be executed by a machine. The significant influence of the programming language on the energy consumption of the resulting programs has been highlighted in some research. However, there is almost no research on the impact of the programming language compiler/interpreter version of the programming language on the energy consumption. This paper aims to fill this gap by investigating the impact of the compiler/interpreter version on the energy consumption of programs written in C, Java and Python. To do that we have developed a study that uses a hardware-based energy measurement approach to obtain the energy consumed by eight algorithms written in the three languages and run with different compiler/interpreter versions. The results do not show a trend of improvement between versions within each language, especially in terms of energy consumption. These results suggest that energy efficiency does not seem to be a major factor when developing compilers/interpreters and should therefore be prioritized.
 
 ## What is this?
 
@@ -92,6 +91,21 @@ The empirical results folder includes all the information on the analysis of the
 It is structured as follows:
 
 ```Java
+|<clusters>
+        |<byAlgorithm>
+                |<gcc>
+		       | <Algorithm>.png
+                |<java>
+		       | <Algorithm>.png
+                |<python>
+		       | <Algorithm>.png
+        |<byLanguaje>
+                |<gcc>
+		       | gcc.png
+                |<java>
+		       | <java.png
+                |<python>
+		       | python.png
 |<report>
 	| <EntityClass-1>@<Algorithm-1>.xls
 	| ...
@@ -105,13 +119,19 @@ It is structured as follows:
 		| ...
 		| <EntityClass-i>@<Algorithm>_dut-i.png
 
-| coorelations.pdf
-| ScatterGraph_of_time_and_consumption.pdf
-| testcases_mann-whitney.xls
-| testcases_spearman.xls
+| ScatterGraph.pdf
+| PowerNormalityC.pdf
+| PowerNormalityJava.pdf
+| PowerNormalityYthon.pdf
+| TimeNormalityC.pdf
+| TimeNormalityJava.pdf
+| TimeNormalityYthon.pdf
+| Statistics_C.pdf
+| Statistics_Java.pdf
+| Statistics_Python.pdf
+
 | testcases_total.xls
 
-| versions_mann-whitney.xls
 | versions_spearman.xls
 | versions_total.xls
 
@@ -125,13 +145,19 @@ In the same way as the "testcase_total" document, the "versions_total" document 
 
 ![](resources/versions_total_example.PNG)
 
-Finally, the validation tests of the statistics can be found in testcases__mann-whitney and versions_mann-whitney. It contains the Kolmogorov-Smirnov and Mann-Whitney tests for all comparisons of time, power and consumption.
+ScatterGraph.pdf contains the scatter plots of time and energy consumption of the software entities separated by programming language.
 
-![](resources/comparison_example.PNG)
+Finally, the validation tests of the statistics:
+- PowerNormalityC.pdf, PowerNormalityJava.pdf and PowerNormalityPython.pdf, contain the Kolmogorov-Smirnov and Shapiro-Wilk tests for the power of the C, Java and Python test cases respectively.
+- TimeNormalityC.pdf, TimeNormalityJava.pdf and TimeNormalityYthon.pdf, contain the Kolmogorov-Smirnov and Shapiro-Wilk tests for the time of the C, Java and Python test cases respectively.
+- Statistics_C.pdf, Statistics_Java.pdf and Statistics_Python.pdf contain all test for the energy consumption of the C, Java and Python test cases respectively.
 
 ### Report Folder
 The report folder contains 225 Excel files containing the analysis data. One for each test case named `<EntityClass>@<Algorithm>`. It also contains two files "testcases_total" and "versions_total" with the summary of the test case and version information respectively.
 As an example, the following images show the information of a test case.
+
+#### Clustering folder
+Within the clustering folder there are two subfolders containing the cluster images for each algorithm and language. There is also the file scriptR.txt with the R code to to generate the clusters.
 
 The first image shows all the information of a measurement.
 ![](resources/measurement_example.PNG)
@@ -139,9 +165,9 @@ The first image shows all the information of a measurement.
 The second image shows all the information of a test case.
 ![](resources/testcase_example.PNG)
 
-
 #### Img folder
 The img folder contains the graphs of the overall consumption in the execution of each measurement performed. It also includes the box plots of each device for each test case and for each version of compiler/interpreter.
+
 ## Sample Logs Folder
 This folder contains an example of a log, to illustrate the raw data generated by the EET measurement instrument. 
 - The json file contains the measurement information of the entity class.

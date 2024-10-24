@@ -8,6 +8,21 @@ The empirical results folder includes all the information on the analysis of the
 It is structured as follows:
 
 ```Java
+|<clusters>
+        |<byAlgorithm>
+                |<gcc>
+		       | <Algorithm>.png
+                |<java>
+		       | <Algorithm>.png
+                |<python>
+		       | <Algorithm>.png
+        |<byLanguaje>
+                |<gcc>
+		       | gcc.png
+                |<java>
+		       | <java.png
+                |<python>
+		       | python.png
 |<report>
 	| <EntityClass-1>@<Algorithm-1>.xls
 	| ...
@@ -21,13 +36,19 @@ It is structured as follows:
 		| ...
 		| <EntityClass-i>@<Algorithm>_dut-i.png
 
-| coorelations.pdf
-| ScatterGraph_of_time_and_consumption.pdf
-| testcases_mann-whitney.xls
-| testcases_spearman.xls
+| ScatterGraph.pdf
+| PowerNormalityC.pdf
+| PowerNormalityJava.pdf
+| PowerNormalityYthon.pdf
+| TimeNormalityC.pdf
+| TimeNormalityJava.pdf
+| TimeNormalityYthon.pdf
+| Statistics_C.pdf
+| Statistics_Java.pdf
+| Statistics_Python.pdf
+
 | testcases_total.xls
 
-| versions_mann-whitney.xls
 | versions_spearman.xls
 | versions_total.xls
 
@@ -41,20 +62,25 @@ In the same way as the "testcase_total" document, the "versions_total" document 
 
 ![](resources/versions_total_example.PNG)
 
-Finally, the validation tests of the statistics can be found in testcases__mann-whitney and versions_mann-whitney. It contains the Kolmogorov-Smirnov and Mann-Whitney tests for all comparisons of time, power and consumption.
+ScatterGraph.pdf contains the scatter plots of time and energy consumption of the software entities separated by programming language.
 
-![](resources/comparison_example.PNG)
+Finally, the validation tests of the statistics:
+- PowerNormalityC.pdf, PowerNormalityJava.pdf and PowerNormalityPython.pdf, contain the Kolmogorov-Smirnov and Shapiro-Wilk tests for the power of the C, Java and Python test cases respectively.
+- TimeNormalityC.pdf, TimeNormalityJava.pdf and TimeNormalityYthon.pdf, contain the Kolmogorov-Smirnov and Shapiro-Wilk tests for the time of the C, Java and Python test cases respectively.
+- Statistics_C.pdf, Statistics_Java.pdf and Statistics_Python.pdf contain all test for the energy consumption of the C, Java and Python test cases respectively.
 
 ### Report Folder
 The report folder contains 225 Excel files containing the analysis data. One for each test case named `<EntityClass>@<Algorithm>`. It also contains two files "testcases_total" and "versions_total" with the summary of the test case and version information respectively.
 As an example, the following images show the information of a test case.
+
+#### Clustering folder
+Within the clustering folder there are two subfolders containing the cluster images for each algorithm and language. There is also the file scriptR.txt with the R code to to generate the clusters.
 
 The first image shows all the information of a measurement.
 ![](resources/measurement_example.PNG)
 
 The second image shows all the information of a test case.
 ![](resources/testcase_example.PNG)
-
 
 #### Img folder
 The img folder contains the graphs of the overall consumption in the execution of each measurement performed. It also includes the box plots of each device for each test case and for each version of compiler/interpreter.
