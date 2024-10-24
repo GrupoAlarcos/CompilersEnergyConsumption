@@ -152,12 +152,12 @@ Finally, the validation tests of the statistics:
 - TimeNormalityC.pdf, TimeNormalityJava.pdf and TimeNormalityYthon.pdf, contain the Kolmogorov-Smirnov and Shapiro-Wilk tests for the time of the C, Java and Python test cases respectively.
 - Statistics_C.pdf, Statistics_Java.pdf and Statistics_Python.pdf contain all test for the energy consumption of the C, Java and Python test cases respectively.
 
+### Clustering folder
+Within the clustering folder there are two subfolders containing the cluster images for each algorithm and language. There is also the file scriptR.txt with the R code to to generate the clusters.
+
 ### Report Folder
 The report folder contains 225 Excel files containing the analysis data. One for each test case named `<EntityClass>@<Algorithm>`. It also contains two files "testcases_total" and "versions_total" with the summary of the test case and version information respectively.
 As an example, the following images show the information of a test case.
-
-#### Clustering folder
-Within the clustering folder there are two subfolders containing the cluster images for each algorithm and language. There is also the file scriptR.txt with the R code to to generate the clusters.
 
 The first image shows all the information of a measurement.
 ![](resources/measurement_example.PNG)
